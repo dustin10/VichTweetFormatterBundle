@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <services>
+        
+        <service id="vich_tweet_formatter.formatter" class="Vich\TweetFormatterBundle\Formatter\TweetFormatter">
+            <argument>%vich_tweet_formatter.link_target_attr%</argument>
+            <argument>%vich_tweet_formatter.link_css_class%</argument>
+        </service>
+        
+    </services>
+
+</container>
