@@ -24,7 +24,7 @@ class Configuration implements ConfigurationInterface
         
         $root
             ->children()
-                ->scalarNode('twig')->cannotBeEmpty()->defaultFalse()->end()
+                ->scalarNode('twig')->cannotBeEmpty()->defaultTrue()->end()
                 ->scalarNode('link_target_attr')->cannotBeEmpty()->defaultValue('_blank')->end()
                 ->scalarNode('link_css_class')->defaultValue('')->end()
             ->end()
