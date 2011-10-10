@@ -47,7 +47,7 @@ class TweetFormatter implements TweetFormatterInterface
         
         foreach ($entityInfo['user_mentions'] as $mention) {
             $handle = sprintf('@%s', $mention['screen_name']);
-            $regex = $this->makeRegex($handle);
+            $regex = $this->makeRegex($handle, true);
             $replacement = $this->makeUserLink($handle);
             
             $regexPairs[$regex] = $replacement;
@@ -81,11 +81,17 @@ class TweetFormatter implements TweetFormatterInterface
      * Makes a regular expression out of the specified text.
      * 
      * @param string $text The text.
+     * @param boolean True if regex pattern should be case insensitive, false otherwise.
      * @return string The regex.
      */
-    protected function makeRegex($text)
+    protected function makeRegex($text, $caseInsensitive = false)
     {
-        return sprintf('/%s/', preg_quote($text, '/'));
+        $basePattern = '/%s/';
+        if ($caseInsensitive) {
+            $basePattern .= 'i';
+        }
+        
+        return sprintf($basePattern, preg_quote($text, '/'));
     }
     
     /**
